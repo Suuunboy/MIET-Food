@@ -1,0 +1,21 @@
+<head>
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+    </script>
+</head>
+
+{% load static %}
+
+<h1> Products </h1>
+{% block content %}
+<div class="row">
+    {%for product in products%}
+    <h2> {{product.title}} </h2>
+    <h4> {{product.price|floatformat:2}} ₽ </h2>
+    <img class="thumbnail" src="{{product.image.url}}" width="189" height="255">
+    <button data-product="{{product.id}}" data-action="add" class="update-cart"> Add to cart </button>
+    {%endfor%}
+</div>
+{% endblock content %} 
+
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>

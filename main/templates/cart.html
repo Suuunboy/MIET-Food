@@ -1,0 +1,14 @@
+<h1> CART </h1>
+{% block content %}
+<div>
+{% for item in items %}
+<h2> {{item.product.title}} </h2>
+<h4> {{item.product.price|floatformat:2}}</h4>
+<h4> {{item.quantity}} </h4>
+<h4> {{item.get_total}} </h4>
+{% endfor %}
+<h4> Total items: {{order.get_cart_items}} </h4>
+<h4> Total: {{order.get_cart_total}} </h4>
+</div>
+{% endblock content %}
+
