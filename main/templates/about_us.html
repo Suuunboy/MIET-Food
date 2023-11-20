@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Корзина</title>
+  {% comment %} <link href="style.css" rel="stylesheet" type="text/css" /> {% endcomment %}
+  <link rel="stylesheet" href="{%static 'css/styleCart.css'%}" >
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+
+
+<body>
+
+  {% comment %} <p style="background-image: url('{% static "images/miet2.jpg" %}');"> {% endcomment %}
+
+  <header>
+    <nav>
+      <label> <a href="main.html" class="logo">Корзинa</a></label>
+      <ul>
+
+        <li><a href="about_us.html"><button class="aboutUs-button">
+              Корзина
+            </button></a></li>
+        
+        <li><a href="profile.html"><img src="/static/images/icons8-гость-мужчина-24.png" height="24" width="24"></a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+  <main>
+    
+    <div class="aboutUs">
+      
+    <div class="aboutAbout">
+      <h1 align="center"> Ваш заказ </h1>
+    </div>
+    
+    {% block content %}
+    {% for item in items %}
+    <div class="item">
+      <div class="imagePrik">
+        <img src="{{item.product.image.url}}" width="150" height="150"/>
+      </div>
+
+      <div class="description">
+        <span>{{item.product.title}}</span>
+      </div>
+      <div class="menshe-btn">
+        <img src="/static/images/menshe.png" width="30" height="30" />
+      </div>
+      
+      <div class="quantity input">
+        <input type="text" name="name" value={{item.quantity}}>
+      </div>
+
+      <div class="bolshe-btn">
+        <img src="/static/images/bolshe.png" width="30" height="50" />
+      </div>
+
+      <div class="total-price">
+        {{item.product.price|floatformat:2}} ₽
+      </div>
+     
+    </div>
+    {% endfor %}
+
+    <p class="total-sum">
+      Сумма: {{order.get_cart_total}} ₽
+    </p>
+
+    <button class="Oformit-button">
+      Оформить
+    </button>
+
+
+    {% endblock content %}
+    </div>
+
+  </main>
+
+</body>
+
+
+</html>
