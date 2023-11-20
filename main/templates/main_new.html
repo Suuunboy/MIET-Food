@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Main</title>
+  <link rel="stylesheet" href="{%static 'css/style.css'%}" >
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    var user = '{{request.user}}'
+</script>
+
+</head>
+
+
+  
+<body>
+  <header>
+    <nav>
+      <label> <a href="main.html" class="logo">Столовая</a></label>
+      <ul>
+
+        <li><a href="about_us.html"><button class="aboutUs-button">
+    Корзина
+  </button></a></li>
+      
+        <li> <div class="profile-pic"> <a href="profile.html"><img src="/static/images/icons8-гость-мужчина-24.png" height="24" width="24"></a></div></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="content">
+      <div class="products">
+        {% block content %}
+        {%for product in products%}
+        <div class="product">
+          <div class="thumbnail">
+            <img src="{{product.image.url}}" alt="">
+          </div>
+          <div class="title">
+            <h3>{{product.title}}</h3>
+            <p> {{product.price|floatformat:2}} ₽ </p>
+          </div>
+          <div class="cart_btn">
+            <button class="btn update-cart" id="1" data-product="{{product.id}}" data-action="add">Добавить в корзину</button>
+          </div>
+        </div>
+        {%endfor%}
+        {% endblock content %} 
+        
+      </div>
+
+      {% comment %} <div class="popup-image">
+        <span>&times;</span>
+        <img src="imgs\food\brusnichka.jpg" alt="">
+        <div class="discription">
+          <!-- <p>Состав: мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, мука, </p> -->
+        </div>
+      </div> {% endcomment %}
+
+      {% comment %} <script src="js/btn_script.js"></script>   {% endcomment %}
+    </div>
+
+    
+  </main>
+  <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+</body>
+
+</html>

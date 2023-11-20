@@ -39,7 +39,7 @@ def register_user(request):
 def main(request):
     products = Product.objects.all()
     context = {'products':products}
-    return render(request, 'main.html', context)
+    return render(request, 'main_new.html', context)
 
 def staff_main(request):
     return render(request, 'staff_main.html', {})
@@ -51,3 +51,8 @@ def cart(request):
     context = {'items':items, 'order':order}
     # return render(request, 'cart.html', context)
     return render(request, 'about_us.html', context)
+
+def profile(request):
+    user = request.user
+    context = {'user': user}
+    return render(request, 'profile.html', context)
