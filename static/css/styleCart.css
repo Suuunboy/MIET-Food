@@ -435,22 +435,22 @@ html, body {
     padding-top: 15px;
     margin-left: 60px;
     width: 500px;
-    color: #FF0000;
+    color: #000000;
   }
   .description1 span {
     font-size: 50px;
-    color: #FF0000;
+    color: #000000;
     font-weight: 100;
   }
    
   .description1 span:first-child {
     margin-bottom: 5px;
-    color: #FF0000;
+    color: #000000;
   }
   .description1 span:last-child {
     font-weight: 700;
     margin-top: 10px;
-    color: #FF0000;
+    color: #000000;
   }
   .exit-btn{
     color: black;
