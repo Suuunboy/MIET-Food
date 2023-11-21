@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
+from django.http import JsonResponse
+import json
 
 # Create your views here.
 
@@ -58,3 +60,32 @@ def profile(request):
     user = request.user
     context = {'user': user}
     return render(request, 'profile.html', context)
+
+def updateItem(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+
+    print('ProductId:', productId)
+    print('Action:', action)
+
+    customer = request.user
+    product = Product.objects.get(id=productId)
+    order, created = Order.objects.get_or_create(customer=customer, complete = False)
+    print(order)
+
+    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+
+    print(orderItem)
+
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity - 1)
+
+    orderItem.save()
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+
+    return JsonResponse('Item was added', safe=False)
