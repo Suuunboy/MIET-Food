@@ -3,10 +3,8 @@ html, body {
     color: #000000;
     height: 100%;
     width: 100%;
-  /*   background-color: #f2ebd8; */
     background-color: #454545;
     font-family: 'Oswald', sans-serif;
-  /*   font-family: 'Playfair Display', serif; */
   }
   *{
     padding:0;
@@ -26,18 +24,7 @@ html, body {
       z-index: 1;
     } 
   
-  /*   header{
-    background: #292929;
-    position: fixed;
-    width: 100%;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    z-index: 1;
-  } */
-  
+
   
   .aboutUs-button {
       background-color: white;
@@ -45,14 +32,10 @@ html, body {
       border: none;
       height: 30px;
       width: 100px;
-  /*     border-color: white;
-      border-width: 1px;
-      border-style: solid; */
       border-radius: 15px;
       cursor: pointer;
       font-weight: bold;
       font-size: 15px;
-  /*     margin-right: 15px; */
       transition: opacity 0.33s;
     }
   
@@ -64,12 +47,7 @@ html, body {
       opacity: 0.6;
     }
   
-  /* nav{
-    background: #292929;
-    height: 80px;
-    width: 100%;
-  
-  } */
+
   
   nav{
   background: #292929;
@@ -84,7 +62,6 @@ html, body {
   }
   
   nav ul li{
-  /*   vertical-align: text-bottom; */
     display: block;
     line-height: 80px;
     margin: 0 5px;
@@ -99,16 +76,6 @@ html, body {
     font-weight: bold;
   }
   
-  /* nav ul{
-    float: right;
-    margin-right: 20px;
-  }
-  
-  nav ul li{
-    display: inline-block;
-    line-height: 80px;
-    margin: 0 5px;
-  } */
   
   nav ul li a{
     color: white;
@@ -125,7 +92,6 @@ html, body {
   
   
   main{
-  /*   margin: 10px auto; */
     color: black;
     height: calc(100vh - 70px);
     display: flex;
@@ -133,15 +99,6 @@ html, body {
     background: url("/static/images/miet2.jpg")no-repeat;
     background-position: center;
     background-size: cover;
-  /*   background-color: #856060; */
-    
-  /*   background: rgba(205, 214, 219, 0.4); */
-  /*   border-radius: 5px; */
-  /*   border-style: solid;
-    border-color: #969696; */
-  /*   width: 80%; */
-  /*   padding-top: 10px;
-    padding-left: 5px; */
   }
   
   .conten{
@@ -163,7 +120,6 @@ html, body {
   
   
   .product{
-  /*   background-color: black; */
     width: 270px;
     margin-bottom: 30px;
     margin-left: 30px;
@@ -183,31 +139,18 @@ html, body {
   .thumbnail {
     width: 100%;
     height: 170px;
-  /*   height: 100%; */
     
   }
   
   .thumbnail img {
     border-top-left-radius: 20px ;
     border-top-right-radius: 20px;
-  /*   border-radius: 20px; */
     object-fit: cover;
     height: 94%;
-  /*   height: 100%; */
     width: 100%;
   }
   
-  /* .author img {
-    object-fit: cover;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    margin-right: 10px;
-  } */
-  
-  /* .details {
-    display: flex;
-  } */
+
   
   .title {
     display: inline-block;
@@ -240,7 +183,6 @@ html, body {
 
   .btn {
     display: inline-block;
-    /* width: 140px; */
     background-color: #1a5cc1;
     color: white;
     border: none;
@@ -259,13 +201,6 @@ html, body {
   .btn:hover {
     opacity: 0.8;
   }
-
-  /* .cart_btn button:active {
-    border: solid;
-    background-color: white;
-    color: #1a5cc1;
-    border-color: black;
-  } */
 
   .products img:active{
     opacity: 0.8;
@@ -317,7 +252,6 @@ html, body {
   
     display: flex;
     flex-direction: column;
-  /*   justify-content: space-around; */
     flex-wrap: wrap;
   }
   
@@ -334,12 +268,9 @@ html, body {
     margin-right: 2%;
     margin-top: 2%;
     margin-bottom: 28px;
-  /*   background-color: black; */
-  /*   margin-bottom: 4px; */
   }
   .rightpic {
       float: right; 
-  /*     margin: 0 0 5px 5px;  */
      }
   
   .aboutPic img{
