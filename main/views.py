@@ -53,6 +53,10 @@ def cart(request):
     order, created = Order.objects.get_or_create(customer=customer, complete = False)
     items = order.orderitem_set.all()
     context = {'items':items, 'order':order}
+    if request.method == "POST":
+        order.complete = True
+        order.save()
+        return redirect('main')
     # return render(request, 'cart.html', context)
     return render(request, 'about_us.html', context)
 

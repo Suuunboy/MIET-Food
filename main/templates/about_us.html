@@ -99,9 +99,13 @@ const csrftoken = getToken('csrftoken');
       Сумма: {{order.get_cart_total}} ₽
     </p>
 
-    <button class="Oformit-button">
+    <form method="POST" class="Oformit-button">
+      {% csrf_token %}
+      <input class="Oformit-btn" type="submit" value="Оформить">
+    </form>
+    {% comment %} <button class="Oformit-button">
       Оформить
-    </button>
+    </button> {% endcomment %}
 
 
     {% endblock content %}
