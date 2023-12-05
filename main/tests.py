@@ -1,6 +1,7 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from .models import Product, Order, OrderItem
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your tests here.
 
@@ -9,22 +10,26 @@ class TestStatus(TestCase):
     def test_main(self):
         response = self.client.get('/main/')
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'main_new.html')
         self.assertIn('MIET FOOD', response.content.decode())
 
     def test_login(self):
         response = self.client.get('/login/')
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'login.html')
         self.assertIn('MIET FOOD', response.content.decode())
 
     def test_register(self):
         response = self.client.get('/register/')
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'register.html')
         self.assertIn('MIET FOOD', response.content.decode())
 
 
     def test_profile(self):
         response = self.client.get('/profile/')
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'profile.html')
         self.assertIn('Ваш профиль', response.content.decode())
 
 class TestModels(TestCase):
@@ -87,3 +92,31 @@ class TestModels(TestCase):
     def test_prder_item_total(self):
         self.assertEqual(self.order_item1.get_total, 750.0)
         self.assertEqual(self.order_item2.get_total, 1132.5)
+
+class TestViews(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.main_url = reverse('main')
+        self.login_url = reverse('login')
+
+        self.user1 = User.objects.create_user(
+            username='peter',
+            email='petergriffin@fguy.com',
+            password='petah1111')
+
+    def test_main(self):
+        response = self.client.get(self.main_url)
+        self.assertTemplateUsed(response, 'main_new.html')
+
+    def test_login(self):
+        response = self.client.get(self.login_url)
+        self.assertTemplateUsed(response, 'login.html')
+
+    def test_login_POST(self):
+        response = self.client.post(self.login_url, {
+            'username': 'peter',
+            'password': 'petah1111'
+        })
+
+        self.assertEqual(response.status_code, 302)
